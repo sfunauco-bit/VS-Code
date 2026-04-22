@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sounds Fun Audio Company | Mixing, Mastering & Bansuri</title>
+  <meta name="description" content="Professional audio services in Mumbai. Engineered to sound right, crafted to sound fun. Mixing, mastering, and session flutes by Sarang Gupta.">
+  
+  <link rel="icon" href="Images/SoundsFun Logo V2-2.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    :root {
+      --bg: #FBF9F7;
+      --blue: #1E4B6C;
+      --blue-dark: #0F2636;
+      --blue-light: #88AABF;
+      --light: #FFFFFF;
+      --accent: #D4AF37; 
+      --shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--blue-dark);
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    /* --- NAVIGATION --- */
+    nav {
+      position: fixed; width: 100%; top: 0; padding: 20px 4%;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 1000; transition: all 0.4s ease; box-sizing: border-box;
+    }
+    nav.nav-scrolled {
+      background-color: rgba(251, 249, 247, 0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 12px 4%;
+    }
+    .nav-logo img { height: 55px; transition: height 0.4s ease; }
+    nav.nav-scrolled .nav-logo img { height: 45px; }
+    .nav-links a {
+      margin: 0 15px; color: var(--light); text-decoration: none;
+      font-weight: 500; font-size: 1rem; transition: color 0.3s;
+    }
+    nav.nav-scrolled .nav-links a { color: var(--blue); }
+    .nav-cta a {
+      padding: 10px 25px; background: var(--light); color: var(--blue);
+      border-radius: 35px; text-decoration: none; font-weight: 700;
+      font-size: 0.95rem; transition: all 0.3s; border: 1px solid var(--light);
+    }
+    nav.nav-scrolled .nav-cta a { background: var(--blue); color: var(--light); border-color: var(--blue); }
+
+    /* --- HERO --- */
+    header {
+      height: 95vh;
+      background: linear-gradient(145deg, #0F2636 0%, #1E4B6C 100%);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: var(--light); padding: 0 20px;
+    }
+    .brand-name {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: 6px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 15px; display: block;
+    }
+    header h1 { font-size: clamp(3rem, 8vw, 4.8rem); margin: 0; font-weight: 700; line-height: 1.1; letter-spacing: -1px; }
+    header p.tagline { font-size: clamp(1.2rem, 3.5vw, 1.6rem); margin: 30px 0 45px; font-weight: 300; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .btn-main {
+      padding: 18px 45px; background: var(--light); color: var(--blue-dark);
+      text-decoration: none; font-weight: 700; border-radius: 40px;
+      transition: all 0.3s ease; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); background: var(--accent); color: var(--blue-dark); }
+
+    /* --- TRUST SECTION --- */
+    .trust-section {
+      padding: 80px 6%; background: #fdfdfd; border-bottom: 1px solid #eee; text-align: center;
+    }
+    .stats-grid { display: flex; justify-content: center; gap: 100px; flex-wrap: wrap; align-items: center; }
+    .stat-number { font-size: 3.5rem; font-weight: 800; color: var(--blue); display: block; line-height: 1; }
+    .stat-text { font-size: 1.1rem; font-weight: 600; color: #555; margin-top: 10px; display: block; }
+    .client-logos {
+      display: flex; justify-content: center; align-items: center;
+      gap: 70px; margin-top: 60px; flex-wrap: wrap; opacity: 0.7;
+    }
+    .client-logo { font-weight: 700; font-size: 1.4rem; color: #bbb; letter-spacing: 2px; }
+
+    /* --- SECTIONS --- */
+    section { padding: 120px 6%; max-width: 1300px; margin: auto; box-sizing: border-box; }
+    .section-dark { background: var(--blue-dark); color: var(--light); max-width: none; }
+    h2 { text-align: center; font-size: 3rem; margin-bottom: 60px; font-weight: 700; }
+    h2::after { content: ""; display: block; width: 60px; height: 4px; background: var(--accent); margin: 20px auto 0; }
+
+    /* --- CAROUSEL --- */
+    .carousel { position: relative; max-width: 950px; margin: 0 auto; }
+    .carousel-container { overflow: hidden; border-radius: 20px; }
+    .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+    .carousel-slide { flex: 0 0 100%; box-sizing: border-box; padding: 0 20px; }
+    .portfolio-item { background: var(--light); padding: 30px; border-radius: 15px; color: var(--blue-dark); box-shadow: var(--shadow); }
+    .portfolio-item p { margin: 0 0 15px; font-weight: 700; text-align: center; font-size: 1.2rem; color: var(--blue); }
+    iframe { width: 100%; border: none; border-radius: 10px; aspect-ratio: 16/9; }
+    #mixing-portfolio iframe { height: 180px; }
+
+    .carousel-button {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: var(--accent); color: var(--blue-dark); border: none; 
+      width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 5;
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem; transition: 0.3s;
+    }
+    .carousel-button:hover { transform: translateY(-50%) scale(1.1); background: var(--light); }
+    .carousel-button.prev { left: -60px; }
+    .carousel-button.next { right: -60px; }
+
+    /* --- CONTACT --- */
+    .contact-form { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 700px; margin: auto; }
+    .contact-form input, .contact-form textarea { padding: 18px; border: 1px solid #ddd; border-radius: 12px; font-size: 1.1rem; font-family: inherit; }
+    .contact-form button { padding: 20px; border: none; background: var(--blue); color: #fff; font-weight: 700; border-radius: 12px; cursor: pointer; font-size: 1.2rem; transition: 0.3s; }
+    .contact-form button:hover { background: var(--blue-dark); }
+    
+    .social-connect { display: flex; justify-content: center; gap: 50px; font-size: 2.5rem; margin-top: 50px; }
+    .social-connect a { color: var(--blue-light); transition: 0.3s; text-decoration: none; }
+    .social-connect a:hover { color: var(--blue); transform: translateY(-5px); }
+    .fiverr-icon { font-weight: 800; font-family: 'Poppins', sans-serif; font-size: 2rem; vertical-align: middle; }
+
+    @media (max-width: 1000px) {
+        .carousel-button { width: 45px; height: 45px; }
+        .carousel-button.prev { left: 0px; }
+        .carousel-button.next { right: 0px; }
+        nav .nav-links { display: none; }
+        header h1 { font-size: 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="#"><img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Company"></a>
+    </div>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="#mixing-portfolio">Mixed & Mastered</a>
+      <a href="#instrumental">Bansuri Sessions</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+        <a href="#contact">Hire Me</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <span class="brand-name">Sounds Fun Audio Company</span>
+      <h1>Engineered to sound right.<br>Crafted to sound fun.</h1>
+      <p class="tagline"> Relentless precision in mixing, mastering, and session Indian woodwinds.</p>
+      <a href="#contact" class="btn-main">Collaborate Now</a>
+    </div>
+  </header>
+
+  <div class="trust-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">40+</span>
+        <span class="stat-text">5-Star Fiverr Orders</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">5.0</span>
+        <span class="stat-text">Global Client Rating</span>
+      </div>
+    </div>
+    <div class="client-logos">
+      <span class="client-logo">KURO GAMES</span>
+      <span class="client-logo">WINDHAVEN BAY STUDIOS</span>
+    </div>
+  </div>
+
+  <main>
+    <section id="mixing-portfolio" class="section-dark">
+        <h2>Mixed & Mastered Credits</h2>
+        <div class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide portfolio-item">
+                        <p>Mix & Master — “Guldaste”</p>
+                        <iframe src="https://embed.music.apple.com/in/album/guldaste-feat-vaishnavi-khutail-nimai-chaitanya/1876467065?i=1876467067"></iframe>
+                    </div> 
+                    <div class="carousel-slide portfolio-item">
+                        <p>Mastering — “Daavanal”</p>
+                        <iframe src="https://embed.music.apple.com/in/album/daavaanal-feat-rohan-prasanna-mrunmay-chhavan/1767821278?i=1767821282"></iframe>
+                    </div> 
+                    <div class="carousel-slide portfolio-item">
+                        <p>Mix & Master — “Hurricane - Katie Laurel”</p>
+                        <iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1967292587&color=%231e4b6c"></iframe>
+                    </div>
+                    <div class="carousel-slide portfolio-item">
+                        <p>Mix & Master — “Seeds of Your Sorrow”</p>
+                        <iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1909235024&color=%231e4b6c"></iframe>
+                    </div>
+                    <div class="carousel-slide portfolio-item">
+                        <p>Yeshu Naam Mein — Stephen Phale Mix</p>
+                        <iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2106913314&color=%23ff5500"></iframe>
+                    </div>
+                    <div class="carousel-slide portfolio-item">
+                        <p>Make You Dance — Cyrille Aimée Demo Mix</p>
+                        <iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1911296819&color=%23ff5500"></iframe>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-button prev">&#10094;</button>
+            <button class="carousel-button next">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="instrumental">
+        <h2>Recorded Bansuri Sessions</h2>
+        <div class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide"><div class="portfolio-item"><p>Kuro Games — “Wuthering Waves” Session I</p><iframe src="https://www.youtube.com/embed/pNS2StZLv8U"></iframe></div></div>
+                    <div class="carousel-slide"><div class="portfolio-item"><p>Kuro Games — “Wuthering Waves” Session II</p><iframe src="https://www.youtube.com/embed/m9u1JgDZ3LM"></iframe></div></div>
+                    <div class="carousel-slide"><div class="portfolio-item"><p>Kuro Games — “Wuthering Waves” Session III</p><iframe src="https://www.youtube.com/embed/gd115-0nmxU"></iframe></div></div>
+                    <div class="carousel-slide"><div class="portfolio-item"><p>Kuro Games — “Wuthering Waves” Session IV</p><iframe src="https://www.youtube.com/embed/Ft7TEOzjnbk"></iframe></div></div>
+                    <div class="carousel-slide"><div class="portfolio-item"><p>Indie Collaboration — Session V</p><iframe src="https://www.youtube.com/embed/gOu4I86LoO8?start=7"></iframe></div></div>
+                    <div class="carousel-slide"><div class="portfolio-item"><p>Live Recording — Session VI</p><iframe src="https://www.youtube.com/embed/nKlTjngwzQw?start=237"></iframe></div></div>
+                </div>
+            </div>
+            <button class="carousel-button prev" style="background: var(--blue); color: white;">&#10094;</button>
+            <button class="carousel-button next" style="background: var(--blue); color: white;">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2>Tell me about your vision</h2>
+            <p style="font-size: 1.3rem;">Based in Mumbai, working with creators globally.</p>
+            <p style="font-size: 1.3rem; margin-top: 10px;">Email: <a href="mailto:sfunauco@gmail.com" style="color: var(--blue); font-weight: 700; text-decoration: none;">sfunauco@gmail.com</a></p>
+        </div>
+        
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+            <input type="hidden" name="access_key" value="7abd2bb2-6168-4b2f-af6c-ea005fd61761">
+            <input type="hidden" name="subject" value="New Inquiry from SoundsFun Site">
+            <input type="hidden" name="redirect" value="https://soundsfun.co.in/thank-you.html">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Tell me about your track..." required></textarea>
+            <button type="submit">Start the Wave</button>
+        </form>
+
+        <div class="social-connect">
+            <a href="https://www.instagram.com/bansuri_vaadak/" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UC8XmH1Ilf188olUPKVcf_ow" target="_blank" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+            <a href="https://www.fiverr.com/sarangmusic" target="_blank" title="Fiverr"><span class="fiverr-icon">fi.</span></a>
+        </div>
+    </section>
+  </main>
+
+  <footer style="text-align: center; padding: 60px 20px; background: var(--blue-dark); color: #fff; border-top: 1px solid rgba(255,255,255,0.1);">
+    <p>© 2026 Sounds Fun Audio Company | Mumbai, India</p>
+  </footer>
+
+  <script>
+    window.onscroll = function() {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) nav.classList.add("nav-scrolled");
+        else nav.classList.remove("nav-scrolled");
+    };
+
+    document.querySelectorAll('.carousel').forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const nextButton = carousel.querySelector('.next');
+        const prevButton = carousel.querySelector('.prev');
+        let index = 0;
+
+        const updatePosition = () => {
+            const width = track.parentElement.offsetWidth;
+            track.style.transform = `translateX(-${index * width}px)`;
+        };
+
+        nextButton.addEventListener('click', () => {
+            index = (index + 1) % track.children.length;
+            updatePosition();
+        });
+
+        prevButton.addEventListener('click', () => {
+            index = (index - 1 + track.children.length) % track.children.length;
+            updatePosition();
+        });
+
+        window.addEventListener('resize', updatePosition);
+    });
+  </script>
+</body>
+</html>

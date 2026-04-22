@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>About | Sounds Fun Audio Co.</title>
+  <meta name="description" content="Meet Sarang Gupta and the mission behind Sounds Fun Audio Co. Professional audio mixing and mastering based in Mumbai.">
+
+  <link rel="icon" href="Images/SoundsFun Logo V2-2.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg: #FBF9F7;
+      --blue: #1E4B6C;
+      --blue-dark: #0F2636;
+      --blue-light: #88AABF;
+      --light: #FFFFFF;
+      --accent: #D4AF37;
+      --shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--blue-dark);
+      line-height: 1.6;
+    }
+
+    /* --- NAVIGATION --- */
+    nav {
+      position: sticky;
+      top: 0;
+      padding: 15px 4%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background-color: rgba(251, 249, 247, 0.98);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .nav-logo img { height: 45px; }
+    .nav-links a {
+      margin: 0 15px;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .nav-links a.active { color: var(--accent); font-weight: 700; }
+    .nav-cta a {
+      padding: 8px 22px;
+      background: var(--blue-dark);
+      color: var(--light);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* --- HERO HEADER --- */
+    .about-hero {
+      background: linear-gradient(145deg, #0F2636 0%, #1E4B6C 100%);
+      color: var(--light);
+      padding: 80px 8% 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      min-height: 60vh;
+    }
+    .hero-photo-container { position: relative; }
+    .hero-photo {
+        width: 320px;
+        height: 320px;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-photo-container::before {
+        content: "";
+        position: absolute;
+        top: -15px; left: -15px;
+        width: 120px; height: 120px;
+        border-top: 5px solid var(--accent);
+        border-left: 5px solid var(--accent);
+        z-index: 1;
+    }
+    .hero-text { flex: 1; max-width: 600px; }
+    
+    /* --- UPDATED TYPECAST FOR TITLE --- */
+    .hero-text .subtitle { 
+        color: var(--accent); 
+        font-weight: 800; /* Heavier weight */
+        text-transform: uppercase; 
+        letter-spacing: 3px; /* More breathing room */
+        display: block; 
+        margin-bottom: 12px;
+        font-size: 0.85rem;
+        opacity: 0.9;
+    }
+    .hero-text h1 { font-size: 3.5rem; margin: 0 0 20px; line-height: 1.1; font-weight: 700; }
+    .hero-text p { font-size: 1.1rem; opacity: 0.9; font-weight: 300; }
+
+    /* --- MISSION BRIDGE --- */
+    .mission-bridge { 
+        background: var(--light); 
+        text-align: center; 
+        margin: -50px auto 0; 
+        border-radius: 15px; 
+        box-shadow: var(--shadow);
+        position: relative;
+        z-index: 10;
+        padding: 50px;
+        max-width: 900px;
+    }
+    .mission-bridge p { font-size: 1.2rem; font-style: italic; color: var(--blue-dark); line-height: 1.8; margin: 0; }
+
+    /* --- PHILOSOPHY --- */
+    section#philosophy { padding: 100px 8% 80px; max-width: 1100px; margin: auto; }
+    h2 { text-align: center; font-size: 2.2rem; margin-bottom: 40px; }
+    h2::after {
+      content: ""; display: block; width: 50px; height: 3px;
+      background: var(--accent); margin: 15px auto 0;
+    }
+    .philosophy-points {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+    }
+    .point-card {
+        background: var(--light);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s;
+        border-top: 4px solid var(--blue-light);
+    }
+    .point-card:hover { transform: translateY(-8px); border-color: var(--accent); }
+    .point-card i { font-size: 2rem; color: var(--blue-light); margin-bottom: 20px; }
+    .point-card h3 { margin: 0 0 15px; color: var(--blue-dark); }
+
+    /* --- FOOTER --- */
+    footer { text-align: center; padding: 60px 20px; background: var(--blue-dark); color: var(--light); }
+    footer .footer-logo img { height: 50px; margin-bottom: 20px; }
+    footer a { color: var(--light); text-decoration: none; margin: 0 10px; opacity: 0.8; }
+    footer a:hover { opacity: 1; color: var(--accent); }
+
+    @media (max-width: 900px) {
+        .about-hero { flex-direction: column; text-align: center; padding-top: 60px; }
+        .hero-photo { width: 250px; height: 250px; }
+        .hero-text h1 { font-size: 2.5rem; }
+        .nav-links { display: none; }
+        .mission-bridge { width: 85%; padding: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">
+      <a href="index.html"><img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Co."></a>
+    </div>
+    <div class="nav-links">
+      <a href="about.html" class="active">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#portfolio">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+        <a href="index.html#contact">Work with me</a>
+    </div>
+  </nav>
+
+  <header class="about-hero">
+    <div class="hero-photo-container">
+        <img src="Images/Profile Freelance 3.png" alt="Sarang Gupta" class="hero-photo">
+    </div>
+    <div class="hero-text">
+        <span class="subtitle">Founder & Lead Engineer</span>
+        <h1>Sarang Gupta</h1>
+        <p>I started Sounds Fun to bridge the gap between technical precision and musical soul. As a classical flutist and a mixing engineer, I hear things from both sides of the glass. My goal is to make sure your sonic vision is brought to life with the same passion you put into creating it.</p>
+        <p>I specialize in film score mixing, high-end mastering, and adding organic woodwind textures that give a track its own unique identity.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="mission-bridge">
+        <p>"Headquartered in Mumbai, I partner with creators who know that sound isn't just an add-on—it's the heartbeat of the story. From indie singles to cinematic scores, I make sure every frequency serves the emotion of the piece."</p>
+    </section>
+    
+    <section id="philosophy">
+      <h2>Sound is Story</h2>
+      <div class="philosophy-points">
+        <div class="point-card">
+          <i class="fas fa-heart"></i>
+          <h3>Emotional Impact</h3>
+          <p>Sound hits the heart before the brain. I focus on the elements that build an instant connection with your listeners.</p>
+        </div>
+        <div class="point-card">
+          <i class="fas fa-headphones"></i>
+          <h3>Immersive Worlds</h3>
+          <p>Whether through Dolby Atmos or a tight stereo mix, I design audio environments that people want to step into.</p>
+        </div>
+        <div class="point-card">
+          <i class="fas fa-pen-fancy"></i>
+          <h3>Intentional Detail</h3>
+          <p>Every silence and every sound has a purpose. We use audio to deepen the meaning of your work, not just fill space.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+        <img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Co.">
+    </div>
+    <p>© 2026 Sounds Fun Audio Co. | Mumbai, India</p>
+    <div style="margin-top: 15px;">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#portfolio">Work</a>
+    </div>
+  </footer>
+
+</body>
+</html>
