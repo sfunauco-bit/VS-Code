@@ -46,7 +46,7 @@
       background: var(--bg);
       color: var(--dark);
       line-height: 1.8;
-      font-size: 18px; /* Increased Base Font Size */
+      font-size: 18px;
     }
 
     h1, h2, h3, h4, .nav-brand, .btn-main, .nav-cta a {
@@ -78,7 +78,6 @@
     nav.scrolled { background: rgba(251,249,247,0.98); box-shadow: 0 1px 0 var(--border), var(--sh-sm); backdrop-filter: blur(12px); }
     nav.scrolled .nav-inner { height: 70px; }
 
-    /* Flexbox grouping for absolute centering */
     .nav-left {
       display: flex; align-items: center; gap: 15px; flex: 1;
     }
@@ -220,7 +219,7 @@
     
     .btn-b {
       padding: 16px 45px; background: transparent; color: rgba(255,255,255,0.9); text-decoration: none; 
-      font-weight: 500; border-radius: 40px; font-size: 1.1rem; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s;
+      font-weight: 500; border-radius: 40px; font-size: 1.1rem; border: 1px solid rgba(255,255,255,0.3); transition: all 0.26s;
     }
     .btn-b:hover { border-color: rgba(255,255,255,0.8); color: #fff; background: rgba(255,255,255,0.1); }
 
@@ -240,7 +239,7 @@
     @keyframes sdot { 0%,100% { transform:translateY(0); opacity:.8; } 55% { transform:translateY(8px); opacity:.2; } }
 
     /* ══════════════════════════════════════
-       TRUST BAND
+       TRUST BAND & LOGOS
     ══════════════════════════════════════ */
     .trust { background: var(--white); border-bottom: 1px solid var(--border); padding: 70px 6%; }
     .trust-in { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; }
@@ -261,13 +260,26 @@
     .fvr-stars { color:#FFD700; font-size:0.8rem; display:block; margin-top:3px; letter-spacing: 2px; }
     .fvr-txt small { font-size:0.75rem; font-weight:500; opacity:0.9; text-transform:uppercase; letter-spacing: 0.05em; }
 
-    .clients { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; }
-    .c-chip {
-      font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--light-b); padding: 8px 18px; border: 1px solid rgba(136,170,191,0.3); 
-      border-radius: 100px; transition: all 0.25s;
+    /* Custom Unskewable Sponsor Logos */
+    .clients { display: flex; gap: 45px; flex-wrap: wrap; align-items: center; justify-content: center; }
+    
+    .c-logo {
+      color: var(--muted); opacity: 0.6; text-decoration: none; transition: all 0.3s ease;
+      display: flex; align-items: center; filter: grayscale(100%);
     }
-    .c-chip:hover { color: var(--blue); border-color: var(--blue); }
+    .c-logo:hover {
+      color: var(--dark); opacity: 1; filter: grayscale(0%); transform: translateY(-2px);
+    }
+    
+    .kuro-wm {
+      font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; font-size: 1.4rem; letter-spacing: 0.05em; gap: 10px;
+    }
+    .kuro-icon { width: 28px; height: 28px; fill: currentColor; }
+    
+    .windhaven-wm {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.15rem; letter-spacing: 0.15em; text-transform: uppercase; gap: 8px;
+    }
+    .windhaven-icon { width: 24px; height: 24px; }
 
     /* ══════════════════════════════════════
        ABOUT SUMMARY
@@ -380,7 +392,26 @@
     .fv-dot { color:#1DBF73; font-size:1.15em; line-height:0; vertical-align:-0.05em; transition:color 0.3s; }
     .soc.fv:hover .fv-dot { color:white; }
 
-    footer { background:var(--dark); color:rgba(255,255,255,0.4); text-align:center; padding:50px 20px; font-size:0.95rem; letter-spacing:0.05em; }
+    footer { 
+      background:var(--dark); color:rgba(255,255,255,0.4); text-align:center; padding:50px 20px; font-size:0.95rem; letter-spacing:0.05em;
+      display: flex; flex-direction: column; align-items: center; gap: 15px; 
+    }
+    footer p { margin: 0; }
+    
+    /* FIX: FOOTER LINK COLOR */
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+    footer a:hover { color: var(--gold); }
+
+    /* MSME Badge CSS */
+    .msme-badge {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      margin-top: 10px; padding: 10px 22px; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px; background: rgba(255,255,255,0.03); transition: all 0.3s;
+    }
+    .msme-badge:hover { border-color: rgba(212,175,55,0.3); background: rgba(255,255,255,0.06); }
+    .msme-badge svg { color: var(--gold); }
+    .msme-badge span { font-size: 0.85rem; letter-spacing: 0.05em; color: rgba(255,255,255,0.6); }
+    .msme-badge strong { color: rgba(255,255,255,0.9); font-weight: 600; font-family: var(--font-heading); }
 
     /* ══════════════════════════════════════
        REVEALS & RESPONSIVE
@@ -411,6 +442,7 @@
       .trust, .about, .sec-dark, .sec-light, .contact { padding:70px 5%; }
       .trust-in { flex-direction:column; align-items:center; text-align:center; gap:40px; }
       .stats { justify-content:center; gap:40px; }
+      .clients { flex-direction: column; gap: 30px; }
       
       .frow { grid-template-columns:1fr; }
       .arr { width:40px; height:40px; font-size:1rem; }
@@ -489,9 +521,21 @@
         </a>
       </div>
     </div>
+    
     <div class="clients rv d3">
-      <span class="c-chip">Kuro Games</span>
-      <span class="c-chip">Windhaven Bay Studios</span>
+      <a href="#" class="c-logo kuro-wm" title="Kuro Games">
+        <svg class="kuro-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H24V24H0V0ZM6 6V18H10V13.5L14 18H19L13.5 12L19 6H14L10 10.5V6H6Z"/>
+        </svg>
+        KURO GAMES
+      </a>
+      
+      <a href="#" class="c-logo windhaven-wm" title="Windhaven Bay Studios">
+        <svg class="windhaven-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 12h4l3-9 5 18 3-9h5"/>
+        </svg>
+        WINDHAVEN BAY
+      </a>
     </div>
   </div>
 </div>
@@ -639,6 +683,14 @@
 
 <footer>
   <p>© 2026 Sounds Fun Audio Company &nbsp;·&nbsp; Mumbai, India &nbsp;·&nbsp; <a href="mailto:sfunauco@gmail.com">sfunauco@gmail.com</a></p>
+  
+  <div class="msme-badge rv d1">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <polyline points="9 12 11 14 15 10"/>
+    </svg>
+    <span>Govt. of India <strong>Udyam Registered MSME</strong></span>
+  </div>
 </footer>
 
 <script>
