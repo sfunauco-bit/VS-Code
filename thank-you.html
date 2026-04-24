@@ -3,159 +3,260 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You - Sounds Fun Audio Co.</title>
+  <title>Thank You | Sounds Fun Audio Company</title>
+  
   <link rel="icon" href="Images/SoundsFun Logo V2-2.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
   <style>
+    /* ─────────────────────────────────────
+       EXACT COLOURS & VARIABLES
+    ───────────────────────────────────── */
     :root {
-      --bg: #FBF9F7;
-      --blue: #1E4B6C;
-      --blue-light: #88AABF;
-      --light: #FFFFFF;
-      --shadow: 0 8px 30px rgba(0,0,0,0.08);
+      --bg:       #FBF9F7;
+      --blue:     #1E4B6C;
+      --dark:     #0F2636;
+      --light-b:  #88AABF;
+      --gold:     #D4AF37;
+      --white:    #FFFFFF;
+      --muted:    #6B7D8A;
+      --border:   rgba(30,75,108,0.13);
+      --sh-sm:    0 2px 14px rgba(15,38,54,0.08);
+      --sh-md:    0 8px 32px rgba(15,38,54,0.12);
+
+      --font-body: 'Inter', sans-serif;
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
     }
-    html { scroll-behavior: smooth; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
-      color: var(--blue);
-      line-height: 1.6;
+      color: var(--dark);
+      line-height: 1.8;
+      font-size: 18px;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    /* --- NAVIGATION --- */
+    h1, h2, h3, h4, .nav-brand, .nav-cta a, .btn-main {
+      font-family: var(--font-heading);
+    }
+
+    /* ══════════════════════════════════════
+       NAV - PERFECTLY CENTERED
+    ══════════════════════════════════════ */
     nav {
-      position: sticky;
-      top: 0;
-      padding: 10px 4%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
-      background-color: rgba(251, 249, 247, 0.98);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      box-sizing: border-box;
+      background: rgba(251,249,247,0.98);
+      box-shadow: 0 1px 0 var(--border), var(--sh-sm); 
+      backdrop-filter: blur(12px);
     }
-    .nav-logo img { height: 40px; }
-    .nav-links { flex-grow: 1; text-align: center; }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 70px;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 15px; flex: 1; }
+    .nav-logo img { height: 38px; display: block; }
+
+    .nav-brand {
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--blue); white-space: nowrap;
+    }
+
+    .nav-links { display: flex; gap: 8px; justify-content: center; flex: 2; }
     .nav-links a {
-      margin: 0 15px;
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-      font-size: 0.95rem;
+      color: var(--muted); text-decoration: none; font-size: 0.95rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase; padding: 8px 16px; border-radius: 8px; transition: all 0.22s;
     }
-    .nav-links a:hover { color: var(--blue-light); }
+    .nav-links a:hover { color: var(--blue); background: rgba(30,75,108,0.07); }
+
+    .nav-cta { flex: 1; display: flex; justify-content: flex-end; }
     .nav-cta a {
-      padding: 8px 20px;
-      background: var(--blue);
-      color: var(--light);
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      border: 2px solid var(--blue);
+      padding: 10px 24px; border-radius: 100px; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.26s; background: var(--blue); color: var(--white);
+      border: 1px solid var(--blue);
     }
-    .nav-cta a:hover {
-        background: var(--blue-light);
-        border-color: var(--blue-light);
-    }
+    .nav-cta a:hover { background: var(--dark); border-color: var(--dark); }
 
-    /* --- MAIN CONTENT --- */
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 8px; border: none; background: none; }
+    .hamburger span { display: block; width: 26px; height: 3px; background: var(--dark); border-radius: 2px; transition: 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    /* mobile drawer */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: rgba(251,249,247,0.98);
+      backdrop-filter: blur(18px); z-index: 899; flex-direction: column; align-items: center; justify-content: center;
+      gap: 15px; opacity: 0; pointer-events: none; transition: opacity 0.35s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-size: 2rem; font-weight: 700; color: var(--blue); font-family: var(--font-heading);
+      text-decoration: none; padding: 10px 40px; opacity: 0; transform: translateY(15px); transition: 0.36s;
+    }
+    .mobile-menu.open a { opacity: 1; transform: translateY(0); }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mob-hire { margin-top: 20px !important; font-size: 1.1rem !important; border: 2px solid rgba(212,175,55,0.5) !important; color: var(--gold) !important; border-radius: 100px; }
+
+    /* ══════════════════════════════════════
+       MAIN CONTENT - THANK YOU CARD
+    ══════════════════════════════════════ */
     main {
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 40px 8%;
+        flex-grow: 1; display: flex; align-items: center; justify-content: center;
+        padding: 120px 5% 80px; 
     }
+    
     .confirmation-box {
-        max-width: 550px;
-        background: var(--light);
-        padding: 40px;
+        width: 100%; max-width: 600px; background: var(--white);
+        padding: 50px 40px; border-radius: 20px; box-shadow: var(--sh-md);
+        text-align: center; border-top: 6px solid var(--gold);
+        animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    .confirmation-box img { height: 50px; margin-bottom: 25px; opacity: 0.9; }
+    h1 { font-size: clamp(2rem, 5vw, 2.5rem); margin-top: 0; margin-bottom: 10px; color: var(--dark); font-weight: 800; letter-spacing: -0.02em; }
+    .subtitle-text { font-size: 1.1rem; color: var(--muted); margin-bottom: 30px; font-weight: 400; }
+
+    /* DYNAMIC DATA BOX */
+    .summary-box {
+        display: none; /* Hidden until JS fills it */
+        background: rgba(30, 75, 108, 0.04);
+        border: 1px solid var(--border);
         border-radius: 12px;
-        box-shadow: var(--shadow);
+        padding: 25px;
+        text-align: left;
+        margin-bottom: 30px;
     }
-    .confirmation-box img {
-        height: 70px;
-        margin-bottom: 20px;
-    }
-    h1 { font-size: 2.5rem; margin-top: 0; }
-    p { font-size: 1.1rem; }
-    .btn {
-      margin-top: 20px;
-      padding: 12px 30px;
-      background: var(--blue);
-      color: var(--light);
-      border-radius: 30px;
-      font-size: 1rem;
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-block;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn:hover {
-      background: #16384f;
-      transform: translateY(-2px);
+    .summary-box h3 { font-size: 1rem; color: var(--blue); margin-top: 0; margin-bottom: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .summary-item { margin-bottom: 8px; font-size: 0.95rem; color: var(--muted); }
+    .summary-item strong { color: var(--dark); font-weight: 600; margin-right: 5px; }
+    .summary-msg {
+        margin-top: 15px; padding-left: 15px; border-left: 3px solid var(--gold);
+        color: var(--dark); font-size: 0.95rem; white-space: pre-wrap; font-style: italic;
     }
 
-    /* --- FOOTER --- */
-    footer { 
-        text-align: center; 
-        padding: 40px 30px; 
-        background: var(--blue);
-        color: var(--light);
+    .btn-main {
+      padding: 16px 40px; background: var(--blue); color: var(--white);
+      text-decoration: none; font-weight: 700; border-radius: 40px; 
+      font-size: 1.05rem; letter-spacing: 0.03em; transition: all 0.3s ease; 
+      box-shadow: var(--sh-sm); display: inline-block;
     }
-    footer p { margin: 5px 0; font-size: 0.9rem; color: var(--light);}
-    footer a { color: var(--light); text-decoration: none; font-weight: 500; }
-    .section-full-width { max-width: none; }
+    .btn-main:hover { background: var(--dark); transform: translateY(-3px); box-shadow: var(--sh-md); }
 
-    /* --- MOBILE --- */
-    .mobile-nav-toggle { display: none; }
-    @media (max-width: 900px) {
-        .nav-links, .nav-cta { display: none; } 
-        .mobile-nav-toggle { 
-            display: block; font-size: 1.8rem; cursor: pointer; 
-            background: none; border: none; color: var(--blue);
-        }
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer { background:var(--dark); color:rgba(255,255,255,0.4); text-align:center; padding:40px 20px; font-size:0.95rem; letter-spacing:0.05em; }
+
+    @media (max-width: 1150px) { .nav-brand { display: none; } }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display:none; }
+      .hamburger, .mobile-menu { display:flex; }
+      .confirmation-box { padding: 40px 25px; }
     }
   </style>
 </head>
 <body>
-  <nav id="navbar">
-    <div class="nav-logo">
-      <a href="index.html"><img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Co. Logo"></a>
-    </div>
-    <div class="nav-links">
-      <a href="about.html">About Us</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#portfolio">Portfolio</a>
-      <a href="index.html#testimonials">Testimonials</a>
-    </div>
-    <div class="nav-cta">
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html"          onclick="closeMob()">About</a>
+    <a href="index.html#mixing-portfolio" onclick="closeMob()">Mixes</a>
+    <a href="index.html#instrumental"     onclick="closeMob()">Bansuri</a>
+    <a href="index.html#testimonials"     onclick="closeMob()">Reviews</a>
+    <a href="index.html#contact"          onclick="closeMob()">Contact</a>
+  </div>
+
+  <nav id="sitenav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="nav-logo"><img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Company"></a>
+        <span class="nav-brand">Sounds Fun Audio Co.</span>
+      </div>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="index.html#mixing-portfolio">Mixes</a>
+        <a href="index.html#instrumental">Bansuri</a>
+        <a href="index.html#testimonials">Reviews</a>
         <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="nav-cta"><a href="index.html#contact">Hire Me</a></div>
+      <button class="hamburger" id="burger" aria-label="Menu" onclick="toggleMob()">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="mobile-nav-toggle"><i class="fa fa-bars"></i></button>
   </nav>
 
   <main>
     <div class="confirmation-box">
       <img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Co. Logo">
       <h1>Message Sent!</h1>
-      <p>Thank you so much for reaching out. I really appreciate it, and I’ll review your message and get back to you soon.</p>
-      <a href="index.html" class="btn">Return to Homepage</a>
+      <p class="subtitle-text">Thanks for reaching out. I'll review your inquiry and get back to you shortly.</p>
+      
+      <div class="summary-box" id="summaryBox">
+          <h3>Submission Details</h3>
+          <div class="summary-item"><strong>Name:</strong> <span id="resName"></span></div>
+          <div class="summary-item"><strong>Email:</strong> <span id="resEmail"></span></div>
+          <div class="summary-msg" id="resMessage"></div>
+      </div>
+
+      <a href="index.html" class="btn-main">Return to Homepage</a>
     </div>
   </main>
   
-  <footer class="section-dark section-full-width">
-    <p>© 2025 Sounds Fun Audio Co. | Mumbai, India</p>
+  <footer>
+    <p>© 2026 Sounds Fun Audio Company | Mumbai, India</p>
   </footer>
+
+  <script>
+    /* MOBILE MENU LOGIC */
+    function toggleMob() {
+      const m = document.getElementById('mobileMenu'), b = document.getElementById('burger');
+      const open = m.classList.toggle('open');
+      b.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    function closeMob() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('burger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('mobileMenu').addEventListener('click', e => { if (e.target === e.currentTarget) closeMob(); });
+
+    /* FETCH AND DISPLAY FORM DATA */
+    document.addEventListener('DOMContentLoaded', () => {
+        // Retrieve the saved data from the browser session
+        const name = sessionStorage.getItem('sf_name');
+        const email = sessionStorage.getItem('sf_email');
+        const message = sessionStorage.getItem('sf_message');
+
+        // If data exists, plug it into the HTML and make the box visible
+        if (name && email && message) {
+            document.getElementById('resName').textContent = name;
+            document.getElementById('resEmail').textContent = email;
+            document.getElementById('resMessage').textContent = message;
+            document.getElementById('summaryBox').style.display = 'block';
+
+            // Optional: Clear the storage so it doesn't stay there forever if they refresh
+            sessionStorage.clear();
+        }
+    });
+  </script>
 
 </body>
 </html>

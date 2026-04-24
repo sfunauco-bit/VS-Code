@@ -8,75 +8,155 @@
   <meta name="description" content="Meet Sarang Gupta and the mission behind Sounds Fun Audio Co. Professional audio mixing and mastering based in Mumbai.">
 
   <link rel="icon" href="Images/SoundsFun Logo V2-2.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   
   <style>
+    /* ─────────────────────────────────────
+       EXACT COLOURS
+    ───────────────────────────────────── */
     :root {
-      --bg: #FBF9F7;
-      --blue: #1E4B6C;
-      --blue-dark: #0F2636;
-      --blue-light: #88AABF;
-      --light: #FFFFFF;
-      --accent: #D4AF37;
-      --shadow: 0 8px 30px rgba(0,0,0,0.08);
+      --bg:       #FBF9F7;
+      --blue:     #1E4B6C;
+      --dark:     #0F2636;
+      --light-b:  #88AABF;
+      --gold:     #D4AF37;
+      --white:    #FFFFFF;
+      --muted:    #6B7D8A;
+      --border:   rgba(30,75,108,0.13);
+      --sh-sm:    0 2px 14px rgba(15,38,54,0.08);
+      --sh-md:    0 8px 32px rgba(15,38,54,0.12);
+
+      --font-body: 'Inter', sans-serif;
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
     }
+
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
-      color: var(--blue-dark);
+      color: var(--dark);
       line-height: 1.8;
-      font-size: 18px;
+      font-size: 18px; 
     }
 
-    /* --- NAVIGATION --- */
+    h1, h2, h3, h4, .nav-brand, .subtitle, .nav-cta a {
+      font-family: var(--font-heading);
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--light-b); border-radius: 3px; }
+
+    /* ══════════════════════════════════════
+       NAV - PERFECTLY CENTERED
+    ══════════════════════════════════════ */
     nav {
-      position: sticky;
-      top: 0;
-      padding: 20px 4%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
-      background-color: rgba(251, 249, 247, 0.98);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background: transparent;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
     }
-    .nav-logo img { height: 45px; }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 85px; transition: height 0.4s ease;
+    }
+    nav.scrolled { background: rgba(251, 249, 247, 0.98); box-shadow: 0 1px 0 var(--border), var(--sh-sm); backdrop-filter: blur(12px); }
+    nav.scrolled .nav-inner { height: 70px; }
+
+    .nav-left { display: flex; align-items: center; gap: 15px; flex: 1; }
+    .nav-logo img { height: 48px; display: block; transition: height 0.4s; }
+    nav.scrolled .nav-logo img { height: 38px; }
+
+    .nav-brand {
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.9);
+      text-shadow: 0 0 15px rgba(212,175,55,0.4);
+      white-space: nowrap; transition: color 0.4s, text-shadow 0.4s;
+    }
+    nav.scrolled .nav-brand { color: var(--blue); text-shadow: none; }
+
+    .nav-links { display: flex; gap: 8px; justify-content: center; flex: 2; }
     .nav-links a {
-      margin: 0 15px;
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
+      color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.95rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase; padding: 8px 16px; border-radius: 8px; transition: all 0.22s;
     }
-    .nav-links a.active { color: var(--accent); font-weight: 700; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .nav-links a.active { color: var(--gold); }
+    
+    nav.scrolled .nav-links a { color: var(--muted); }
+    nav.scrolled .nav-links a.active { color: var(--blue); font-weight: 700; }
+    nav.scrolled .nav-links a:hover { color: var(--blue); background: rgba(30,75,108,0.07); }
+
+    .nav-cta { flex: 1; display: flex; justify-content: flex-end; }
     .nav-cta a {
-      padding: 10px 25px;
-      background: var(--blue-dark);
-      color: var(--light);
-      border-radius: 35px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
+      padding: 10px 24px; border-radius: 100px; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.26s; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .nav-cta a:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+    nav.scrolled .nav-cta a { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    nav.scrolled .nav-cta a:hover { background: var(--dark); border-color: var(--dark); }
+
+    /* hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 8px; border: none; background: none; z-index: 1100;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 3px; background: rgba(255,255,255,0.9); border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.16,1,0.3,1); transform-origin: center;
+    }
+    nav.scrolled .hamburger span { background: var(--dark); }
+    .hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); background: var(--dark); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background: var(--dark); }
+
+    /* mobile drawer */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: rgba(251,249,247,0.98);
+      backdrop-filter: blur(18px); z-index: 899; flex-direction: column; align-items: center; justify-content: center;
+      gap: 15px; opacity: 0; pointer-events: none; transition: opacity 0.35s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-size: 2rem; font-weight: 700; color: var(--blue); font-family: var(--font-heading);
+      text-decoration: none; padding: 10px 40px; opacity: 0; transform: translateY(15px);
+      transition: color 0.2s, opacity 0.36s ease, transform 0.36s ease;
+    }
+    .mobile-menu.open a { opacity: 1; transform: translateY(0); }
+    .mobile-menu.open a:nth-child(1) { transition-delay: 0.05s; }
+    .mobile-menu.open a:nth-child(2) { transition-delay: 0.1s; }
+    .mobile-menu.open a:nth-child(3) { transition-delay: 0.15s; }
+    .mobile-menu.open a:nth-child(4) { transition-delay: 0.2s; }
+    .mobile-menu.open a:nth-child(5) { transition-delay: 0.25s; }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mob-hire {
+      margin-top: 20px !important; font-size: 1.1rem !important; font-weight: 800 !important;
+      letter-spacing: 0.1em !important; text-transform: uppercase !important;
+      padding: 15px 40px !important; border-radius: 100px !important;
+      border: 2px solid rgba(212,175,55,0.5) !important; color: var(--gold) !important;
     }
 
     /* --- HERO HEADER --- */
     .about-hero {
       background: linear-gradient(145deg, #0F2636 0%, #1E4B6C 100%);
-      color: var(--light);
-      padding: 100px 8% 120px;
+      color: var(--white);
+      padding: 150px 8% 140px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 60px;
+      gap: 70px;
       min-height: 60vh;
     }
     .hero-photo-container { position: relative; }
     .hero-photo {
-        width: 320px;
-        height: 320px;
+        width: 350px;
+        height: 350px;
         border-radius: 20px;
         object-fit: cover;
         box-shadow: 0 20px 40px rgba(0,0,0,0.3);
@@ -85,47 +165,65 @@
     .hero-photo-container::before {
         content: "";
         position: absolute;
-        top: -15px; left: -15px;
-        width: 120px; height: 120px;
-        border-top: 5px solid var(--accent);
-        border-left: 5px solid var(--accent);
+        top: -20px; left: -20px;
+        width: 140px; height: 140px;
+        border-top: 6px solid var(--accent);
+        border-left: 6px solid var(--accent);
         z-index: 1;
     }
+    
+    /* MAX CONTRAST TEXT SETTINGS */
     .hero-text { flex: 1; max-width: 650px; }
     
     .hero-text .subtitle { 
-        color: var(--accent); 
+        color: var(--gold); 
         font-weight: 800;
         text-transform: uppercase; 
         letter-spacing: 4px;
         display: block; 
         margin-bottom: 15px;
-        font-size: 0.9rem;
-        opacity: 0.9;
+        font-size: 0.95rem;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3); /* Added Shadow */
     }
-    .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin: 0 0 25px; line-height: 1.15; font-weight: 700; }
-    .hero-text p { font-size: 1.15rem; opacity: 0.95; font-weight: 300; }
+    .hero-text h1 { 
+        color: var(--white); /* Force pure white */
+        font-size: clamp(3rem, 5vw, 4.5rem); 
+        margin: 0 0 25px; 
+        line-height: 1.1; 
+        font-weight: 800; 
+        letter-spacing: -0.02em; 
+        text-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Added Shadow */
+    }
+    .hero-text p { 
+        color: var(--white); /* Force pure white */
+        font-size: 1.15rem; 
+        opacity: 1; /* Removed transparency fade */
+        font-weight: 400; 
+        margin-bottom: 20px; 
+        text-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Added Shadow */
+        line-height: 1.9;
+    }
 
     /* --- MISSION BRIDGE --- */
     .mission-bridge { 
-        background: var(--light); 
+        background: var(--white); 
         text-align: center; 
         margin: -60px auto 0; 
         border-radius: 20px; 
-        box-shadow: var(--shadow);
+        box-shadow: var(--sh-md);
         position: relative;
         z-index: 10;
         padding: 60px;
-        max-width: 950px;
+        max-width: 1000px;
     }
-    .mission-bridge p { font-size: 1.3rem; font-style: italic; color: var(--blue-dark); line-height: 1.8; margin: 0; }
+    .mission-bridge p { font-size: 1.4rem; font-style: italic; color: var(--blue-dark); line-height: 1.8; margin: 0; font-weight: 500; }
 
     /* --- PHILOSOPHY --- */
     section#philosophy { padding: 120px 6% 100px; max-width: 1300px; margin: auto; }
-    h2 { text-align: center; font-size: 2.8rem; margin-bottom: 60px; font-weight: 700; }
+    h2 { text-align: center; font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 60px; font-weight: 800; }
     h2::after {
       content: ""; display: block; width: 60px; height: 4px;
-      background: var(--accent); margin: 18px auto 0;
+      background: var(--accent); margin: 20px auto 0; border-radius: 2px;
     }
     .philosophy-points {
         display: grid;
@@ -134,49 +232,69 @@
         margin-top: 60px;
     }
     .point-card {
-        background: var(--light);
+        background: var(--white);
         padding: 50px 40px;
         border-radius: 20px;
-        box-shadow: var(--shadow);
-        transition: transform 0.3s ease;
+        box-shadow: var(--sh-sm);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         border-top: 4px solid var(--blue-light);
         text-align: center;
     }
-    .point-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+    .point-card:hover { transform: translateY(-10px); border-color: var(--blue); box-shadow: var(--sh-md); }
     .point-card i { font-size: 2.5rem; color: var(--blue-light); margin-bottom: 25px; display: block; }
-    .point-card h3 { margin: 0 0 20px; color: var(--blue-dark); font-size: 1.6rem; }
+    .point-card h3 { margin: 0 0 20px; color: var(--dark); font-size: 1.6rem; font-weight: 700; font-family: var(--font-heading); }
     .point-card p { font-size: 1.1rem; color: #555; }
 
     /* --- FOOTER --- */
-    footer { text-align: center; padding: 60px 20px; background: var(--blue-dark); color: var(--light); border-top: 1px solid rgba(255,255,255,0.1); }
-    footer .footer-logo img { height: 50px; margin-bottom: 25px; }
-    footer a { color: var(--light); text-decoration: none; margin: 0 15px; opacity: 0.8; font-size: 0.95rem; }
-    footer a:hover { opacity: 1; color: var(--accent); }
+    footer { text-align: center; padding: 60px 20px; background: var(--dark); color: rgba(255,255,255,0.4); font-size: 0.95rem; }
+    footer .footer-logo img { height: 50px; margin-bottom: 25px; filter: grayscale(1) brightness(1.5); opacity: 0.5; transition: 0.3s; }
+    footer .footer-logo img:hover { filter: none; opacity: 1; }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 15px; font-weight: 500; transition: color 0.3s; }
+    footer a:hover { color: var(--gold); }
 
+    @media (max-width: 1150px) {
+      .nav-brand { display: none; }
+    }
     @media (max-width: 1000px) {
-        .about-hero { flex-direction: column; text-align: center; padding-top: 80px; }
+        .about-hero { flex-direction: column; text-align: center; padding-top: 130px; gap: 40px; }
+        .hero-photo-container::before { display: none; }
         .hero-photo { width: 280px; height: 280px; }
-        .hero-text h1 { font-size: 2.8rem; }
-        .nav-links { display: none; }
-        .mission-bridge { width: 90%; padding: 40px; margin-top: 20px; }
-        body { font-size: 17px; }
+        .hero-text h1 { font-size: 3rem; }
+        .nav-links, .nav-cta { display: none; }
+        .hamburger { display: flex; }
+        .mobile-menu { display: flex; }
+        .mission-bridge { width: 90%; padding: 40px; margin-top: -30px; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-logo">
-      <a href="index.html"><img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Company"></a>
-    </div>
-    <div class="nav-links">
-      <a href="about.html" class="active">About</a>
-      <a href="index.html#mixing-portfolio">Mixed & Mastered</a>
-      <a href="index.html#instrumental">Bansuri Sessions</a>
-      <a href="index.html#contact">Contact</a>
-    </div>
-    <div class="nav-cta">
-        <a href="index.html#contact">Work with me</a>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html" class="active" onclick="closeMob()">About</a>
+    <a href="index.html#mixing-portfolio" onclick="closeMob()">Mixes</a>
+    <a href="index.html#instrumental"     onclick="closeMob()">Bansuri</a>
+    <a href="index.html#testimonials"     onclick="closeMob()">Reviews</a>
+    <a href="index.html#contact"          onclick="closeMob()">Contact</a>
+    <a href="index.html#contact" class="mob-hire" onclick="closeMob()">Hire Me</a>
+  </div>
+
+  <nav id="sitenav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="nav-logo"><img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Company"></a>
+        <span class="nav-brand">Sounds Fun Audio Co.</span>
+      </div>
+      <div class="nav-links">
+        <a href="about.html" class="active">About</a>
+        <a href="index.html#mixing-portfolio">Mixes</a>
+        <a href="index.html#instrumental">Bansuri</a>
+        <a href="index.html#testimonials">Reviews</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="nav-cta"><a href="index.html#contact">Hire Me</a></div>
+      <button class="hamburger" id="burger" aria-label="Menu" onclick="toggleMob()">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -221,7 +339,7 @@
 
   <footer>
     <div class="footer-logo">
-        <img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Company">
+        <a href="index.html"><img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Company"></a>
     </div>
     <p>© 2026 Sounds Fun Audio Company | Mumbai, India</p>
     <div style="margin-top: 20px;">
@@ -231,5 +349,24 @@
     </div>
   </footer>
 
+  <script>
+    /* NAV SCROLL */
+    const nav = document.getElementById('sitenav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive:true });
+
+    /* MOBILE MENU */
+    function toggleMob() {
+      const m = document.getElementById('mobileMenu'), b = document.getElementById('burger');
+      const open = m.classList.toggle('open');
+      b.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    function closeMob() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('burger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('mobileMenu').addEventListener('click', e => { if (e.target === e.currentTarget) closeMob(); });
+  </script>
 </body>
 </html>

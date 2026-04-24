@@ -3,295 +3,709 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Sounds Fun Audio Company | Mixing, Mastering & Bansuri</title>
   <meta name="description" content="Professional audio services in Mumbai. Engineered to sound right, crafted to sound fun. Mixing, mastering, and session flutes by Sarang Gupta.">
-  
   <link rel="icon" href="Images/SoundsFun Logo V2-2.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+
   <style>
+    /* ─────────────────────────────────────
+       EXACT COLOURS FROM soundsfun.co.in
+       --bg        #FBF9F7  warm off-white
+       --blue      #1E4B6C  primary blue
+       --dark      #0F2636  dark navy
+       --light-b   #88AABF  muted blue
+       --gold      #D4AF37  accent gold
+       --white     #FFFFFF
+    ───────────────────────────────────── */
     :root {
-      --bg: #FBF9F7;
-      --blue: #1E4B6C;
-      --blue-dark: #0F2636;
-      --blue-light: #88AABF;
-      --light: #FFFFFF;
-      --accent: #D4AF37; 
-      --shadow: 0 8px 30px rgba(0,0,0,0.08);
+      --bg:       #FBF9F7;
+      --blue:     #1E4B6C;
+      --dark:     #0F2636;
+      --light-b:  #88AABF;
+      --gold:     #D4AF37;
+      --gold-dim: #B8952A;
+      --white:    #FFFFFF;
+      --muted:    #6B7D8A;
+      --border:   rgba(30,75,108,0.13);
+      --sh-sm:    0 2px 14px rgba(15,38,54,0.08);
+      --sh-md:    0 8px 32px rgba(15,38,54,0.12);
+
+      --font-body: 'Inter', sans-serif;
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
     }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; overflow-x: hidden; }
+
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
-      color: var(--blue-dark);
+      color: var(--dark);
       line-height: 1.8;
-      font-size: 18px;
+      font-size: 18px; /* Increased Base Font Size */
     }
 
-    /* --- NAVIGATION --- */
+    h1, h2, h3, h4, .nav-brand, .btn-main, .nav-cta a {
+      font-family: var(--font-heading);
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--light-b); border-radius: 3px; }
+
+    /* ══════════════════════════════════════
+       NAV - PERFECTLY CENTERED
+    ══════════════════════════════════════ */
     nav {
-      position: fixed; width: 100%; top: 0; padding: 20px 4%;
-      display: flex; justify-content: space-between; align-items: center;
-      z-index: 1000; transition: all 0.4s ease; box-sizing: border-box;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      background: transparent;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
     }
-    nav.nav-scrolled {
-      background-color: rgba(251, 249, 247, 0.98);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      padding: 12px 4%;
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 85px;
+      transition: height 0.4s ease;
     }
-    .nav-logo img { height: 55px; transition: height 0.4s ease; }
-    nav.nav-scrolled .nav-logo img { height: 45px; }
+    nav.scrolled { background: rgba(251,249,247,0.98); box-shadow: 0 1px 0 var(--border), var(--sh-sm); backdrop-filter: blur(12px); }
+    nav.scrolled .nav-inner { height: 70px; }
+
+    /* Flexbox grouping for absolute centering */
+    .nav-left {
+      display: flex; align-items: center; gap: 15px; flex: 1;
+    }
+    .nav-logo img { height: 48px; display: block; transition: height 0.4s; }
+    nav.scrolled .nav-logo img { height: 38px; }
+
+    .nav-brand {
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.9);
+      text-shadow: 0 0 15px rgba(212,175,55,0.4);
+      white-space: nowrap; transition: color 0.4s, text-shadow 0.4s;
+    }
+    nav.scrolled .nav-brand { color: var(--blue); text-shadow: none; }
+
+    .nav-links { 
+      display: flex; gap: 8px; justify-content: center; flex: 2; 
+    }
     .nav-links a {
-      margin: 0 15px; color: var(--light); text-decoration: none;
-      font-weight: 500; font-size: 1rem; transition: color 0.3s;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none; font-size: 0.95rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      padding: 8px 16px; border-radius: 8px; transition: all 0.22s;
     }
-    nav.nav-scrolled .nav-links a { color: var(--blue); }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    nav.scrolled .nav-links a { color: var(--muted); }
+    nav.scrolled .nav-links a:hover { color: var(--blue); background: rgba(30,75,108,0.07); }
+
+    .nav-cta {
+      flex: 1; display: flex; justify-content: flex-end;
+    }
     .nav-cta a {
-      padding: 10px 25px; background: var(--light); color: var(--blue);
-      border-radius: 35px; text-decoration: none; font-weight: 700;
-      font-size: 0.95rem; transition: all 0.3s; border: 1px solid var(--light);
+      padding: 10px 24px; border-radius: 100px;
+      font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.26s;
+      background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(255,255,255,0.3);
     }
-    nav.nav-scrolled .nav-cta a { background: var(--blue); color: var(--light); border-color: var(--blue); }
+    .nav-cta a:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+    nav.scrolled .nav-cta a { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    nav.scrolled .nav-cta a:hover { background: var(--dark); border-color: var(--dark); }
 
-    /* --- HERO --- */
-    header {
-      height: 95vh;
-      background: linear-gradient(145deg, #0F2636 0%, #1E4B6C 100%);
+    /* hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 6px;
+      cursor: pointer; padding: 8px; border: none; background: none; z-index: 1100;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 3px;
+      background: rgba(255,255,255,0.9); border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.16,1,0.3,1); transform-origin: center;
+    }
+    nav.scrolled .hamburger span { background: var(--dark); }
+    .hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); background: var(--dark); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background: var(--dark); }
+
+    /* mobile drawer */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(251,249,247,0.98);
+      backdrop-filter: blur(18px); z-index: 899;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 15px; opacity: 0; pointer-events: none; transition: opacity 0.35s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-size: 2rem; font-weight: 700; color: var(--blue); font-family: var(--font-heading);
+      text-decoration: none; padding: 10px 40px; opacity: 0; transform: translateY(15px);
+      transition: color 0.2s, opacity 0.36s ease, transform 0.36s ease;
+    }
+    .mobile-menu.open a { opacity: 1; transform: translateY(0); }
+    .mobile-menu.open a:nth-child(1) { transition-delay: 0.05s; }
+    .mobile-menu.open a:nth-child(2) { transition-delay: 0.1s; }
+    .mobile-menu.open a:nth-child(3) { transition-delay: 0.15s; }
+    .mobile-menu.open a:nth-child(4) { transition-delay: 0.2s; }
+    .mobile-menu.open a:nth-child(5) { transition-delay: 0.25s; }
+    .mobile-menu.open a:nth-child(6) { transition-delay: 0.3s; }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mob-hire {
+      margin-top: 20px !important; font-size: 1.1rem !important; font-weight: 800 !important;
+      letter-spacing: 0.1em !important; text-transform: uppercase !important;
+      padding: 15px 40px !important; border-radius: 100px !important;
+      border: 2px solid rgba(212,175,55,0.5) !important; color: var(--gold) !important;
+    }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      position: relative; min-height: 100vh; min-height: 100svh;
       display: flex; align-items: center; justify-content: center;
-      text-align: center; color: var(--light); padding: 0 20px;
+      text-align: center; color: var(--white); padding-top: 85px; overflow: hidden;
     }
-    .brand-name {
-      font-size: 1.3rem; font-weight: 800; letter-spacing: 6px;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 15px; display: block;
+    .hero-photo {
+      position: absolute; inset: 0;
+      background: linear-gradient(145deg, #0F2636 0%, #1E4B6C 100%);
+      transform: scale(1.05); animation: hZoom 20s ease-in-out infinite alternate;
     }
-    header h1 { font-size: clamp(3rem, 8vw, 4.8rem); margin: 0; font-weight: 700; line-height: 1.1; letter-spacing: -1px; }
-    header p.tagline { font-size: clamp(1.2rem, 3.5vw, 1.6rem); margin: 30px 0 45px; font-weight: 300; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto; }
-    .btn-main {
-      padding: 18px 45px; background: var(--light); color: var(--blue-dark);
-      text-decoration: none; font-weight: 700; border-radius: 40px;
-      transition: all 0.3s ease; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); background: var(--accent); color: var(--blue-dark); }
-
-    /* --- TRUST SECTION --- */
-    .trust-section {
-      padding: 80px 6%; background: #fdfdfd; border-bottom: 1px solid #eee; text-align: center;
-    }
-    .stats-grid { display: flex; justify-content: center; gap: 100px; flex-wrap: wrap; align-items: center; }
-    .stat-number { font-size: 3.5rem; font-weight: 800; color: var(--blue); display: block; line-height: 1; }
-    .stat-text { font-size: 1.1rem; font-weight: 600; color: #555; margin-top: 10px; display: block; }
-    .client-logos {
-      display: flex; justify-content: center; align-items: center;
-      gap: 70px; margin-top: 60px; flex-wrap: wrap; opacity: 0.7;
-    }
-    .client-logo { font-weight: 700; font-size: 1.4rem; color: #bbb; letter-spacing: 2px; }
-
-    /* --- SECTIONS --- */
-    section { padding: 120px 6%; max-width: 1300px; margin: auto; box-sizing: border-box; }
-    .section-dark { background: var(--blue-dark); color: var(--light); max-width: none; }
-    h2 { text-align: center; font-size: 3rem; margin-bottom: 60px; font-weight: 700; }
-    h2::after { content: ""; display: block; width: 60px; height: 4px; background: var(--accent); margin: 20px auto 0; }
-
-    /* --- CAROUSEL --- */
-    .carousel { position: relative; max-width: 950px; margin: 0 auto; }
-    .carousel-container { overflow: hidden; border-radius: 20px; }
-    .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-    .carousel-slide { flex: 0 0 100%; box-sizing: border-box; padding: 0 20px; }
-    .portfolio-item { background: var(--light); padding: 30px; border-radius: 15px; color: var(--blue-dark); box-shadow: var(--shadow); }
-    .portfolio-item p { margin: 0 0 15px; font-weight: 700; text-align: center; font-size: 1.2rem; color: var(--blue); }
-    iframe { width: 100%; border: none; border-radius: 10px; aspect-ratio: 16/9; }
-    #mixing-portfolio iframe { height: 180px; }
-
-    .carousel-button {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: var(--accent); color: var(--blue-dark); border: none; 
-      width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 5;
-      display: flex; align-items: center; justify-content: center; font-size: 1.4rem; transition: 0.3s;
-    }
-    .carousel-button:hover { transform: translateY(-50%) scale(1.1); background: var(--light); }
-    .carousel-button.prev { left: -60px; }
-    .carousel-button.next { right: -60px; }
-
-    /* --- CONTACT --- */
-    .contact-form { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 700px; margin: auto; }
-    .contact-form input, .contact-form textarea { padding: 18px; border: 1px solid #ddd; border-radius: 12px; font-size: 1.1rem; font-family: inherit; }
-    .contact-form button { padding: 20px; border: none; background: var(--blue); color: #fff; font-weight: 700; border-radius: 12px; cursor: pointer; font-size: 1.2rem; transition: 0.3s; }
-    .contact-form button:hover { background: var(--blue-dark); }
+    @keyframes hZoom { from { transform: scale(1.05); } to { transform: scale(1.12); } }
     
-    .social-connect { display: flex; justify-content: center; gap: 50px; font-size: 2.5rem; margin-top: 50px; }
-    .social-connect a { color: var(--blue-light); transition: 0.3s; text-decoration: none; }
-    .social-connect a:hover { color: var(--blue); transform: translateY(-5px); }
-    .fiverr-icon { font-weight: 800; font-family: 'Poppins', sans-serif; font-size: 2rem; vertical-align: middle; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: url("https://www.transparenttextures.com/patterns/stardust.png");
+      opacity: 0.15; pointer-events: none;
+    }
+    .hero-body { position: relative; z-index: 2; max-width: 900px; padding: 0 24px; }
+    
+    .hero-eyebrow {
+      display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px;
+      animation: up 1s 0s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .hero-eyebrow-rule { flex: 1; max-width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
+    .hero-eyebrow-rule.r { background: linear-gradient(to left, transparent, var(--gold)); }
+    .hero-eyebrow span {
+      font-size: clamp(0.75rem, 1.5vw, 0.9rem); font-weight: 800; letter-spacing: 0.3em; 
+      text-transform: uppercase; color: var(--gold); text-shadow: 0 0 20px rgba(212,175,55,0.5);
+    }
+    
+    @keyframes up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; 
+      letter-spacing: -0.03em; margin-bottom: 25px; animation: up 1s 0.11s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .hero h1 em { font-style: italic; font-weight: 500; color: rgba(255,255,255,0.85); }
+    
+    .hero-tag {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 300; opacity: 0.9; 
+      max-width: 650px; margin: 0 auto 45px; animation: up 1s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; animation: up 1s 0.29s cubic-bezier(0.16,1,0.3,1) both; }
+    
+    .btn-a {
+      padding: 16px 45px; background: var(--white); color: var(--dark); text-decoration: none; 
+      font-size: 1.1rem; letter-spacing: 0.03em; border-radius: 40px;
+      transition: all 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .btn-a:hover { background: var(--gold); transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.25); }
+    
+    .btn-b {
+      padding: 16px 45px; background: transparent; color: rgba(255,255,255,0.9); text-decoration: none; 
+      font-weight: 500; border-radius: 40px; font-size: 1.1rem; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s;
+    }
+    .btn-b:hover { border-color: rgba(255,255,255,0.8); color: #fff; background: rgba(255,255,255,0.1); }
 
-    @media (max-width: 1000px) {
-        .carousel-button { width: 45px; height: 45px; }
-        .carousel-button.prev { left: 0px; }
-        .carousel-button.next { right: 0px; }
-        nav .nav-links { display: none; }
-        header h1 { font-size: 2.8rem; }
+    .scroll-hint {
+      position: absolute; bottom: 35px; left: 50%; transform: translateX(-50%); z-index: 2; 
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.4); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; animation: up 1s 0.7s both;
+    }
+    .s-mouse {
+      width: 20px; height: 32px; border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 10px; display: flex; align-items: flex-start; justify-content: center; padding: 4px;
+    }
+    .s-mouse::after {
+      content: ''; width: 2px; height: 6px; background: rgba(255,255,255,0.6); 
+      border-radius: 1px; animation: sdot 2.2s ease-in-out infinite;
+    }
+    @keyframes sdot { 0%,100% { transform:translateY(0); opacity:.8; } 55% { transform:translateY(8px); opacity:.2; } }
+
+    /* ══════════════════════════════════════
+       TRUST BAND
+    ══════════════════════════════════════ */
+    .trust { background: var(--white); border-bottom: 1px solid var(--border); padding: 70px 6%; }
+    .trust-in { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; }
+    .stats { display: flex; gap: 60px; flex-wrap: wrap; align-items: center; }
+    .stat-num { display: block; font-size: 3.5rem; font-family: var(--font-heading); font-weight: 800; color: var(--blue); line-height: 1; }
+    .stat-lbl { display: block; font-size: 0.9rem; font-weight: 600; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 10px; }
+
+    /* Text-Based Unskewable Fiverr badge */
+    .fvr-badge {
+      display: flex; align-items: center; gap: 15px; padding: 15px 25px; background: #1DBF73; 
+      border-radius: 12px; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 14px rgba(29,191,115,0.25);
+    }
+    .fvr-badge:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(29,191,115,0.4); }
+    .fvr-wm { color:white; font-family:'Poppins',sans-serif; font-weight:800; font-size:1.6rem; letter-spacing:-0.03em; line-height:1; }
+    .fvr-wm sup { font-size:0.55em; vertical-align:super; }
+    .fvr-txt { color:white; }
+    .fvr-txt strong { display:block; font-size:1.05rem; font-weight:700; line-height:1.2; font-family: var(--font-heading); }
+    .fvr-stars { color:#FFD700; font-size:0.8rem; display:block; margin-top:3px; letter-spacing: 2px; }
+    .fvr-txt small { font-size:0.75rem; font-weight:500; opacity:0.9; text-transform:uppercase; letter-spacing: 0.05em; }
+
+    .clients { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; }
+    .c-chip {
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--light-b); padding: 8px 18px; border: 1px solid rgba(136,170,191,0.3); 
+      border-radius: 100px; transition: all 0.25s;
+    }
+    .c-chip:hover { color: var(--blue); border-color: var(--blue); }
+
+    /* ══════════════════════════════════════
+       ABOUT SUMMARY
+    ══════════════════════════════════════ */
+    .about { background: var(--bg); border-bottom: 1px solid var(--border); padding: 110px 6%; }
+    .about-in { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .eyebrow { display: block; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 15px; }
+    .about-text h3 { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--dark); margin-bottom: 20px; }
+    .about-text p { color: #444; font-size: 1.1rem; margin-bottom: 20px; font-weight: 400; }
+
+    .svcs { display:flex; flex-direction:column; gap:12px; }
+    .svc {
+      display:flex; align-items:center; gap:18px; padding:18px 25px; background:var(--white);
+      border:1px solid var(--border); border-radius:15px; transition:all 0.3s;
+    }
+    .svc:hover { border-color:var(--light-b); transform:translateX(5px); box-shadow:var(--sh-md); }
+    .svc-ic { font-size:1.5rem; width:35px; text-align:center; }
+    .svc-tx strong { display:block; font-size:1.1rem; font-weight:700; color:var(--dark); font-family: var(--font-heading); }
+    .svc-tx span { font-size:0.95rem; color:var(--muted); }
+
+    /* ══════════════════════════════════════
+       SECTIONS & CAROUSEL
+    ══════════════════════════════════════ */
+    .sec-dark { background: var(--dark); padding: 110px 6%; }
+    .sec-dark-in { max-width: 1300px; margin: auto; }
+    .sec-light { padding: 110px 6%; max-width: 1300px; margin: auto; }
+
+    .s-label { display:block; font-size:0.8rem; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:15px; text-align:center; }
+    h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; text-align: center; line-height: 1.2; margin-bottom: 60px; }
+    h2.wh { color: var(--white); }
+    h2.dk { color: var(--dark); }
+    h2::after { content:''; display:block; width:50px; height:4px; background:var(--gold); margin:20px auto 0; border-radius:2px; }
+
+    .car { position:relative; max-width:1000px; margin:0 auto; }
+    .car-vp { overflow:hidden; border-radius:20px; }
+    .car-track { display:flex; transition:transform 0.6s cubic-bezier(0.23,1,0.32,1); will-change:transform; }
+    .car-slide { flex:0 0 100%; padding:0 5px; }
+
+    .card-dk { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 30px; transition: border-color 0.3s; }
+    .card-dk:hover { border-color: rgba(212,175,55,0.4); }
+
+    .card-lt { background: var(--white); border: 1px solid var(--border); border-radius: 15px; padding: 30px; box-shadow: var(--sh-md); transition: all 0.3s; }
+    .card-lt:hover { border-color: var(--blue); box-shadow: 0 15px 40px rgba(15,38,54,0.15); }
+
+    .c-lbl { display:block; font-size:1.1rem; font-weight:700; font-family: var(--font-heading); color:var(--gold); margin-bottom:15px; text-align:center; }
+    .card-lt .c-lbl { color: var(--blue); }
+
+    iframe { width:100%; border:none; border-radius:10px; display:block; height:180px; }
+
+    .arr {
+      position:absolute; top:50%; transform:translateY(-50%); width:50px; height:50px; border-radius:50%; border:none; 
+      cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.2rem; transition:all 0.3s; z-index:5;
+    }
+    .arr-gold { background:var(--gold); color:var(--dark); }
+    .arr-gold:hover { background:var(--white); transform:translateY(-50%) scale(1.1); box-shadow: var(--sh-md); }
+    .arr-blue { background:var(--blue); color:var(--white); }
+    .arr-blue:hover { background:var(--dark); transform:translateY(-50%) scale(1.1); box-shadow: var(--sh-md); }
+    .arr.prev { left:-70px; }
+    .arr.next { right:-70px; }
+
+    .dots { display:flex; justify-content:center; gap:10px; margin-top:30px; }
+    .dot { width:8px; height:8px; border-radius:4px; border:none; cursor:pointer; padding:0; background:rgba(255,255,255,0.2); transition:all 0.3s; }
+    .dot.on { background:var(--gold); width:30px; }
+    .dots.lt .dot { background:rgba(30,75,108,0.15); }
+    .dots.lt .dot.on { background:var(--blue); }
+
+    /* ══════════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════════ */
+    .testi-text { font-style: italic; font-size: 1.3rem; color: rgba(255,255,255,0.9); margin-bottom: 25px; line-height: 1.7; padding: 10px 20px; }
+
+    /* ══════════════════════════════════════
+       CONTACT & FOOTER
+    ══════════════════════════════════════ */
+    .contact { padding: 110px 6%; background: var(--white); }
+    .contact-in { max-width: 700px; margin: auto; text-align: center; }
+
+    .email-link {
+      display:inline-flex; align-items:center; gap:10px; color:var(--blue); font-weight:700; font-size:1.15rem;
+      text-decoration:none; margin-bottom:45px; padding:12px 30px; border:2px solid var(--border);
+      border-radius:100px; transition:all 0.3s; background:var(--bg);
+    }
+    .email-link:hover { background:var(--blue); color:var(--white); border-color:var(--blue); transform: translateY(-3px); }
+
+    .cform { display:flex; flex-direction:column; gap:15px; }
+    .frow  { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .cform input, .cform textarea {
+      width:100%; padding:18px 22px; border:1px solid var(--border); border-radius:12px;
+      font-size:1.05rem; font-family:inherit; background:var(--bg); color:var(--dark); outline:none; transition:all 0.3s;
+    }
+    .cform input:focus, .cform textarea:focus { border-color:var(--light-b); box-shadow:0 0 0 4px rgba(136,170,191,0.15); background:var(--white); }
+    .cform textarea { resize:vertical; min-height:150px; }
+    .cform-btn {
+      padding:20px; background:var(--blue); color:var(--white); border:none; border-radius:12px; font-weight:700; font-size:1.1rem;
+      letter-spacing:0.05em; cursor:pointer; font-family:inherit; transition:all 0.3s;
+    }
+    .cform-btn:hover { background:var(--dark); transform:translateY(-3px); box-shadow:var(--sh-md); }
+    
+    .socials { display:flex; justify-content:center; align-items:center; gap:20px; margin-top:50px; }
+    .soc {
+      width:55px; height:55px; border-radius:50%; border:1px solid var(--border); background:var(--bg);
+      display:flex; align-items:center; justify-content:center; color:var(--blue); text-decoration:none; transition:all 0.3s;
+    }
+    .soc:hover { color:white; border-color:transparent; transform:translateY(-5px); box-shadow:var(--sh-md); }
+    .soc.ig:hover { background:#E1306C; }
+    .soc.yt:hover { background:#FF0000; }
+    
+    .soc.fv { width:auto; border-radius:12px; padding:0 20px; font-family:'Poppins',sans-serif; font-weight:800; font-size:1.1rem; letter-spacing:-0.03em; }
+    .soc.fv:hover { background:#1DBF73; }
+    .fv-dot { color:#1DBF73; font-size:1.15em; line-height:0; vertical-align:-0.05em; transition:color 0.3s; }
+    .soc.fv:hover .fv-dot { color:white; }
+
+    footer { background:var(--dark); color:rgba(255,255,255,0.4); text-align:center; padding:50px 20px; font-size:0.95rem; letter-spacing:0.05em; }
+
+    /* ══════════════════════════════════════
+       REVEALS & RESPONSIVE
+    ══════════════════════════════════════ */
+    .rv { opacity:0; transform:translateY(20px); transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .rv.in { opacity:1; transform:translateY(0); }
+    .d1 { transition-delay:0.1s; } .d2 { transition-delay:0.2s; } .d3 { transition-delay:0.3s; }
+
+    @media (max-width: 1150px) {
+      .nav-brand { display: none; }
+    }
+    @media (max-width: 1060px) {
+      .arr.prev { left:2px; } .arr.next { right:2px; }
+      .about-in { grid-template-columns:1fr; gap:50px; }
+      .about-text .eyebrow, .about-text h3, .about-text p { text-align:center; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display:none; }
+      .hamburger { display:flex; }
+      .mobile-menu { display:flex; }
+
+      .hero { padding-top: 62px; } 
+      .hero h1 { font-size: clamp(2.4rem, 9vw, 3.2rem); }
+      .hero-tag { font-size:1.1rem; }
+      .btn-a, .btn-b { padding:14px 30px; font-size:1rem; }
+      .scroll-hint { display:none; }
+
+      .trust, .about, .sec-dark, .sec-light, .contact { padding:70px 5%; }
+      .trust-in { flex-direction:column; align-items:center; text-align:center; gap:40px; }
+      .stats { justify-content:center; gap:40px; }
+      
+      .frow { grid-template-columns:1fr; }
+      .arr { width:40px; height:40px; font-size:1rem; }
+      .arr.prev { left:4px; } .arr.next { right:4px; }
     }
   </style>
 </head>
 <body>
 
-  <nav id="navbar">
-    <div class="nav-logo">
-      <a href="#"><img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Company"></a>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html"        onclick="closeMob()">About</a>
+  <a href="#mixing-portfolio" onclick="closeMob()">Mixes</a>
+  <a href="#instrumental"     onclick="closeMob()">Bansuri</a>
+  <a href="#testimonials"     onclick="closeMob()">Reviews</a>
+  <a href="#contact"          onclick="closeMob()">Contact</a>
+  <a href="#contact" class="mob-hire" onclick="closeMob()">Hire Me</a>
+</div>
+
+<nav id="sitenav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="#" class="nav-logo"><img src="Images/SoundsFun Logo V2-2.png" alt="Sounds Fun Audio Company"></a>
+      <span class="nav-brand">Sounds Fun Audio Co.</span>
     </div>
     <div class="nav-links">
       <a href="about.html">About</a>
-      <a href="#mixing-portfolio">Mixed & Mastered</a>
-      <a href="#instrumental">Bansuri Sessions</a>
-      <a href="#contact">Contact</a>
+      <a href="#mixing-portfolio">Mixes</a>
+      <a href="#instrumental">Bansuri</a>
+      <a href="#testimonials">Reviews</a>
     </div>
-    <div class="nav-cta">
-        <a href="#contact">Hire Me</a>
-    </div>
-  </nav>
+    <div class="nav-cta"><a href="#contact">Hire Me</a></div>
+    <button class="hamburger" id="burger" aria-label="Menu" onclick="toggleMob()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-  <header>
-    <div>
-      <span class="brand-name">Sounds Fun Audio Company</span>
-      <h1>Engineered to sound right.<br>Crafted to sound fun.</h1>
-      <p class="tagline"> Relentless precision in mixing, mastering, and session Indian woodwinds.</p>
-      <a href="#contact" class="btn-main">Collaborate Now</a>
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-rule"></span>
+      <span>Sounds Fun Audio Company</span>
+      <span class="hero-eyebrow-rule r"></span>
     </div>
-  </header>
-
-  <div class="trust-section">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <span class="stat-number">40+</span>
-        <span class="stat-text">5-Star Fiverr Orders</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">5.0</span>
-        <span class="stat-text">Global Client Rating</span>
-      </div>
-    </div>
-    <div class="client-logos">
-      <span class="client-logo">KURO GAMES</span>
-      <span class="client-logo">WINDHAVEN BAY STUDIOS</span>
+    <h1>Engineered to sound right.<br><em>Crafted to sound fun.</em></h1>
+    <p class="hero-tag">Relentless precision in mixing, mastering, and session Indian woodwinds — from Mumbai to the world.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-a">Collaborate Now</a>
+      <a href="#mixing-portfolio" class="btn-b">Hear the Work</a>
     </div>
   </div>
+  <div class="scroll-hint"><div class="s-mouse"></div>Scroll</div>
+</section>
 
-  <main>
-    <section id="mixing-portfolio" class="section-dark">
-        <h2>Mixed & Mastered Credits</h2>
-        <div class="carousel">
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="carousel-slide portfolio-item">
-                        <p>Mix & Master — “Guldaste”</p>
-                        <iframe src="https://embed.music.apple.com/in/album/guldaste-feat-vaishnavi-khutail-nimai-chaitanya/1876467065?i=1876467067"></iframe>
-                    </div> 
-                    <div class="carousel-slide portfolio-item">
-                        <p>Mastering — “Daavanal”</p>
-                        <iframe src="https://embed.music.apple.com/in/album/daavaanal-feat-rohan-prasanna-mrunmay-chhavan/1767821278?i=1767821282"></iframe>
-                    </div> 
-                    <div class="carousel-slide portfolio-item">
-                        <p>Mix & Master — “Hurricane - Katie Laurel”</p>
-                        <iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1967292587&color=%231e4b6c"></iframe>
-                    </div>
-                    <div class="carousel-slide portfolio-item">
-                        <p>Mix & Master — “Seeds of Your Sorrow”</p>
-                        <iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1909235024&color=%231e4b6c"></iframe>
-                    </div>
-                    <div class="carousel-slide portfolio-item">
-                        <p>Yeshu Naam Mein — Stephen Phale Mix</p>
-                        <iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2106913314&color=%23ff5500"></iframe>
-                    </div>
-                    <div class="carousel-slide portfolio-item">
-                        <p>Make You Dance — Cyrille Aimée Demo Mix</p>
-                        <iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1911296819&color=%23ff5500"></iframe>
-                    </div>
-                </div>
+<div class="trust">
+  <div class="trust-in">
+    <div class="stats">
+      <div class="rv">
+        <span class="stat-num">40+</span>
+        <span class="stat-lbl">Projects Delivered</span>
+      </div>
+      <div class="rv d1">
+        <span class="stat-num">5.0</span>
+        <span class="stat-lbl">Global Client Rating</span>
+      </div>
+      <div class="rv d2">
+        <a href="https://www.fiverr.com/sarangmusic" target="_blank" rel="noopener" class="fvr-badge">
+          <div class="fvr-wm">fiverr<sup>.</sup></div>
+          <div class="fvr-txt">
+            <strong>40+ Five-Star Orders</strong>
+            <span class="fvr-stars">★★★★★</span>
+            <small>Verified Seller</small>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="clients rv d3">
+      <span class="c-chip">Kuro Games</span>
+      <span class="c-chip">Windhaven Bay Studios</span>
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  <div class="about-in">
+    <div class="about-text rv">
+      <span class="eyebrow">The Studio</span>
+      <h3>Where Indian tradition meets global sound.</h3>
+      <p>Based in Mumbai, Sounds Fun Audio Company is the creative home of Sarang Gupta — audio engineer, bansuri player, and session musician working with artists and studios across the globe.</p>
+      <p>Whether you need your mix polished to perfection or want the ancient voice of the bansuri woven into your track, this is where it happens.</p>
+    </div>
+    <div class="svcs rv d1">
+      <div class="svc"><span class="svc-ic">🎛</span><div class="svc-tx"><strong>Mixing</strong><span>Full stem mix with revisions</span></div></div>
+      <div class="svc"><span class="svc-ic">💿</span><div class="svc-tx"><strong>Mastering</strong><span>Streaming &amp; physical-ready masters</span></div></div>
+      <div class="svc"><span class="svc-ic">🎵</span><div class="svc-tx"><strong>Bansuri Sessions</strong><span>Remote recording, any genre</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-dark" id="mixing-portfolio">
+  <div class="sec-dark-in">
+    <span class="s-label rv">Portfolio</span>
+    <h2 class="wh rv">Mixed &amp; Mastered Credits</h2>
+    <div class="car rv">
+      <div class="car-vp">
+        <div class="car-track" id="mix-track">
+          <div class="car-slide"><div class="card-dk"><span class="c-lbl">Mix &amp; Master — "Guldaste"</span><iframe src="https://embed.music.apple.com/in/album/guldaste-feat-vaishnavi-khutail-nimai-chaitanya/1876467065?i=1876467067" loading="lazy"></iframe></div></div>
+          <div class="car-slide"><div class="card-dk"><span class="c-lbl">Mastering — "Daavanal"</span><iframe src="https://embed.music.apple.com/in/album/daavaanal-feat-rohan-prasanna-mrunmay-chhavan/1767821278?i=1767821282" loading="lazy"></iframe></div></div>
+          <div class="car-slide"><div class="card-dk"><span class="c-lbl">Mix &amp; Master — "Hurricane"</span><iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1967292587&color=%231e4b6c" loading="lazy"></iframe></div></div>
+          <div class="car-slide"><div class="card-dk"><span class="c-lbl">Mix &amp; Master — "Seeds of Your Sorrow"</span><iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1909235024&color=%231e4b6c" loading="lazy"></iframe></div></div>
+          <div class="car-slide"><div class="card-dk"><span class="c-lbl">Yeshu Naam Mein — Mix</span><iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2106913314&color=%23d4af37" loading="lazy"></iframe></div></div>
+          <div class="car-slide"><div class="card-dk"><span class="c-lbl">Make You Dance — Demo</span><iframe scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1911296819&color=%23d4af37" loading="lazy"></iframe></div></div>
+        </div>
+      </div>
+      <button class="arr arr-gold prev" data-t="mix-track">&#10094;</button>
+      <button class="arr arr-gold next" data-t="mix-track">&#10095;</button>
+      <div class="dots" id="mix-dots"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-light" id="instrumental">
+  <span class="s-label rv">Session Work</span>
+  <h2 class="dk rv">Recorded Bansuri Sessions</h2>
+  <div class="car rv">
+    <div class="car-vp">
+      <div class="car-track" id="ban-track">
+        <div class="car-slide"><div class="card-lt"><span class="c-lbl">Kuro Games — "Wuthering Waves" I</span><iframe src="https://www.youtube.com/embed/pNS2StZLv8U" loading="lazy"></iframe></div></div>
+        <div class="car-slide"><div class="card-lt"><span class="c-lbl">Kuro Games — "Wuthering Waves" II</span><iframe src="https://www.youtube.com/embed/m9u1JgDZ3LM" loading="lazy"></iframe></div></div>
+        <div class="car-slide"><div class="card-lt"><span class="c-lbl">Kuro Games — "Wuthering Waves" III</span><iframe src="https://www.youtube.com/embed/gd115-0nmxU" loading="lazy"></iframe></div></div>
+        <div class="car-slide"><div class="card-lt"><span class="c-lbl">Kuro Games — "Wuthering Waves" IV</span><iframe src="https://www.youtube.com/embed/Ft7TEOzjnbk" loading="lazy"></iframe></div></div>
+        <div class="car-slide"><div class="card-lt"><span class="c-lbl">Indie Collaboration</span><iframe src="https://www.youtube.com/embed/gOu4I86LoO8?start=7" loading="lazy"></iframe></div></div>
+        <div class="car-slide"><div class="card-lt"><span class="c-lbl">Live Recording</span><iframe src="https://www.youtube.com/embed/nKlTjngwzQw?start=237" loading="lazy"></iframe></div></div>
+      </div>
+    </div>
+    <button class="arr arr-blue prev" data-t="ban-track">&#10094;</button>
+    <button class="arr arr-blue next" data-t="ban-track">&#10095;</button>
+    <div class="dots lt" id="ban-dots"></div>
+  </div>
+</div>
+
+<div class="sec-dark" id="testimonials">
+  <div class="sec-dark-in">
+    <span class="s-label rv">Client Love</span>
+    <h2 class="wh rv">What People Say</h2>
+    <div class="car rv">
+      <div class="car-vp">
+        <div class="car-track" id="test-track">
+          <div class="car-slide">
+            <div class="card-dk" style="text-align:center;">
+              <p class="testi-text">"I had the pleasure of working with Sarang, and I couldn’t be happier with the results... Highly professional, talented, and a joy to collaborate with."</p>
+              <span class="c-lbl" style="margin-bottom:0;">– Emmanuel, Windhaven Bay Studios</span>
             </div>
-            <button class="carousel-button prev">&#10094;</button>
-            <button class="carousel-button next">&#10095;</button>
-        </div>
-    </section>
-
-    <section id="instrumental">
-        <h2>Recorded Bansuri Sessions</h2>
-        <div class="carousel">
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="carousel-slide"><div class="portfolio-item"><p>Kuro Games — “Wuthering Waves” Session I</p><iframe src="https://www.youtube.com/embed/pNS2StZLv8U"></iframe></div></div>
-                    <div class="carousel-slide"><div class="portfolio-item"><p>Kuro Games — “Wuthering Waves” Session II</p><iframe src="https://www.youtube.com/embed/m9u1JgDZ3LM"></iframe></div></div>
-                    <div class="carousel-slide"><div class="portfolio-item"><p>Kuro Games — “Wuthering Waves” Session III</p><iframe src="https://www.youtube.com/embed/gd115-0nmxU"></iframe></div></div>
-                    <div class="carousel-slide"><div class="portfolio-item"><p>Kuro Games — “Wuthering Waves” Session IV</p><iframe src="https://www.youtube.com/embed/Ft7TEOzjnbk"></iframe></div></div>
-                    <div class="carousel-slide"><div class="portfolio-item"><p>Indie Collaboration — Session V</p><iframe src="https://www.youtube.com/embed/gOu4I86LoO8?start=7"></iframe></div></div>
-                    <div class="carousel-slide"><div class="portfolio-item"><p>Live Recording — Session VI</p><iframe src="https://www.youtube.com/embed/nKlTjngwzQw?start=237"></iframe></div></div>
-                </div>
+          </div>
+          <div class="car-slide">
+            <div class="card-dk" style="text-align:center;">
+              <p class="testi-text">"Polished, clear, and full of life. A joy to work with."</p>
+              <span class="c-lbl" style="margin-bottom:0;">– Farukh, Fiverr Client</span>
             </div>
-            <button class="carousel-button prev" style="background: var(--blue); color: white;">&#10094;</button>
-            <button class="carousel-button next" style="background: var(--blue); color: white;">&#10095;</button>
+          </div>
+          <div class="car-slide">
+            <div class="card-dk" style="text-align:center;">
+              <p class="testi-text">"He was so calm and patient with me... he didn’t just deliver how I wanted it, but added his own touch and enhanced the song’s aura so beautifully!"</p>
+              <span class="c-lbl" style="margin-bottom:0;">– Antara, Indie Artist</span>
+            </div>
+          </div>
+          <div class="car-slide">
+            <div class="card-dk" style="text-align:center;">
+              <p class="testi-text">"Incredible attention to detail. The master sounds huge on every system I've tested it on. Highly recommended."</p>
+              <span class="c-lbl" style="margin-bottom:0;">– Chaitanya Nimai, Producer</span>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+      <button class="arr arr-gold prev" data-t="test-track">&#10094;</button>
+      <button class="arr arr-gold next" data-t="test-track">&#10095;</button>
+      <div class="dots" id="test-dots"></div>
+    </div>
+  </div>
+</div>
 
-    <section id="contact">
-        <div style="text-align: center; margin-bottom: 50px;">
-            <h2>Tell me about your vision</h2>
-            <p style="font-size: 1.3rem;">Based in Mumbai, working with creators globally.</p>
-            <p style="font-size: 1.3rem; margin-top: 10px;">Email: <a href="mailto:sfunauco@gmail.com" style="color: var(--blue); font-weight: 700; text-decoration: none;">sfunauco@gmail.com</a></p>
-        </div>
-        
-        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-            <input type="hidden" name="access_key" value="7abd2bb2-6168-4b2f-af6c-ea005fd61761">
-            <input type="hidden" name="subject" value="New Inquiry from SoundsFun Site">
-            <input type="hidden" name="redirect" value="https://soundsfun.co.in/thank-you.html">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="5" placeholder="Tell me about your track..." required></textarea>
-            <button type="submit">Start the Wave</button>
-        </form>
+<div class="contact" id="contact">
+  <div class="contact-in">
+    <span class="s-label rv">Get in Touch</span>
+    <h2 class="dk rv">Tell me about your vision</h2>
+    <p class="rv" style="color:var(--muted);margin-bottom:24px;font-size:1.1rem;font-weight:400;">Based in Mumbai · Working with creators globally</p>
 
-        <div class="social-connect">
-            <a href="https://www.instagram.com/bansuri_vaadak/" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UC8XmH1Ilf188olUPKVcf_ow" target="_blank" title="YouTube"><i class="fa fa-youtube-play"></i></a>
-            <a href="https://www.fiverr.com/sarangmusic" target="_blank" title="Fiverr"><span class="fiverr-icon">fi.</span></a>
-        </div>
-    </section>
-  </main>
+    <a href="mailto:sfunauco@gmail.com" class="email-link rv">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      sfunauco@gmail.com
+    </a>
 
-  <footer style="text-align: center; padding: 60px 20px; background: var(--blue-dark); color: #fff; border-top: 1px solid rgba(255,255,255,0.1);">
-    <p>© 2026 Sounds Fun Audio Company | Mumbai, India</p>
-  </footer>
+    <form id="cform" action="https://api.web3forms.com/submit" method="POST" class="cform rv d1">
+      <input type="hidden" name="access_key" value="f4a1c423-89b7-4551-a0bd-ba051cc95b91">
+      <input type="hidden" name="subject" value="New Inquiry — SoundsFun Website">
+      <input type="hidden" name="redirect" value="https://soundsfun.co.in/thank-you.html">
+      <input type="checkbox" name="botcheck" style="display:none">
+      
+      <div class="frow">
+        <input type="text"  name="name"  placeholder="Your Name"  required>
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+      <textarea name="message" placeholder="Tell me about your track..." required></textarea>
+      <button type="submit" class="cform-btn">Send Message ✦</button>
+    </form>
 
-  <script>
-    window.onscroll = function() {
-        const nav = document.getElementById('navbar');
-        if (window.scrollY > 50) nav.classList.add("nav-scrolled");
-        else nav.classList.remove("nav-scrolled");
-    };
+    <div class="socials rv d2">
+      <a href="https://www.instagram.com/bansuri_vaadak/" target="_blank" rel="noopener" class="soc ig" title="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="https://www.youtube.com/channel/UC8XmH1Ilf188olUPKVcf_ow" target="_blank" rel="noopener" class="soc yt" title="YouTube">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/>
+        </svg>
+      </a>
+      <a href="https://www.fiverr.com/sarangmusic" target="_blank" rel="noopener" class="soc fv" title="Fiverr">
+        fiverr<span class="fv-dot">.</span>
+      </a>
+    </div>
+  </div>
+</div>
 
-    document.querySelectorAll('.carousel').forEach(carousel => {
-        const track = carousel.querySelector('.carousel-track');
-        const nextButton = carousel.querySelector('.next');
-        const prevButton = carousel.querySelector('.prev');
-        let index = 0;
+<footer>
+  <p>© 2026 Sounds Fun Audio Company &nbsp;·&nbsp; Mumbai, India &nbsp;·&nbsp; <a href="mailto:sfunauco@gmail.com">sfunauco@gmail.com</a></p>
+</footer>
 
-        const updatePosition = () => {
-            const width = track.parentElement.offsetWidth;
-            track.style.transform = `translateX(-${index * width}px)`;
-        };
+<script>
+/* NAV */
+const nav = document.getElementById('sitenav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive:true });
 
-        nextButton.addEventListener('click', () => {
-            index = (index + 1) % track.children.length;
-            updatePosition();
-        });
+/* MOBILE MENU */
+function toggleMob() {
+  const m = document.getElementById('mobileMenu'), b = document.getElementById('burger');
+  const open = m.classList.toggle('open');
+  b.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+function closeMob() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('mobileMenu').addEventListener('click', e => { if (e.target === e.currentTarget) closeMob(); });
 
-        prevButton.addEventListener('click', () => {
-            index = (index - 1 + track.children.length) % track.children.length;
-            updatePosition();
-        });
+/* CAROUSEL */
+function initCar(trackId, dotsId) {
+  const track = document.getElementById(trackId); if (!track) return;
+  const total = track.children.length; let idx = 0;
+  const dotsEl = document.getElementById(dotsId);
+  
+  if (dotsEl) {
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' on' : '');
+      d.setAttribute('aria-label', 'Slide '+(i+1));
+      d.addEventListener('click', () => go(i));
+      dotsEl.appendChild(d);
+    }
+  }
+  function sync() { if (dotsEl) Array.from(dotsEl.children).forEach((d,i) => d.classList.toggle('on', i === idx)); }
+  function go(i) {
+    idx = (i + total) % total;
+    track.style.transform = `translateX(-${idx * track.parentElement.offsetWidth}px)`;
+    sync();
+  }
+  document.querySelectorAll(`.arr[data-t="${trackId}"]`).forEach(b => b.addEventListener('click', () => go(b.classList.contains('next') ? idx+1 : idx-1)));
+  window.addEventListener('resize', () => { track.style.transform = `translateX(-${idx * track.parentElement.offsetWidth}px)`; }, { passive:true });
+  
+  let tx = 0;
+  track.parentElement.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive:true });
+  track.parentElement.addEventListener('touchend',   e => { const d = tx - e.changedTouches[0].clientX; if (Math.abs(d) > 38) go(d > 0 ? idx+1 : idx-1); }, { passive:true });
+}
+initCar('mix-track','mix-dots');
+initCar('ban-track','ban-dots');
+initCar('test-track','test-dots');
 
-        window.addEventListener('resize', updatePosition);
-    });
-  </script>
+/* REVEAL */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold:0.08 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* FORM - Redirect & Data Save */
+const cf = document.getElementById('cform');
+if (cf) {
+  cf.addEventListener('submit', function() {
+    // Save the user's inputs to Session Storage right before redirecting
+    sessionStorage.setItem('sf_name', cf.querySelector('[name="name"]').value);
+    sessionStorage.setItem('sf_email', cf.querySelector('[name="email"]').value);
+    sessionStorage.setItem('sf_message', cf.querySelector('[name="message"]').value);
+  });
+}
+</script>
 </body>
 </html>
